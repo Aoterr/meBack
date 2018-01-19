@@ -1,0 +1,18 @@
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+c3p0:
+  jdbcUrl: jdbc:mysql://127.0.0.1:3306/minierp?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8
+  user: root
+  password: root
+  driverClass: com.mysql.jdbc.Driver
+  minPoolSize: 5
+  maxPoolSize: 20
+  maxIdleTime: 850
+  acquireIncrement: 3
+  maxStatements: 0
+  initialPoolSize: 5
+  idleConnectionTestPeriod: 800
+  acquireRetryAttempts: 30
+  breakAfterAcquireFailure: false
+  testConnectionOnCheckout: false
