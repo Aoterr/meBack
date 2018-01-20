@@ -22,5 +22,7 @@ public class UserRespositoryTest {
 
     @Test
     public void testInsertUser() {
+        List<User> users = userMapper.getUsers();
+        System.out.println(users);
     }
 }

@@ -4,7 +4,7 @@ mybatis:
 c3p0:
   jdbcUrl: jdbc:mysql://127.0.0.1:3306/minierp?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=UTF-8
   user: root
-  password: root
+  password:
   driverClass: com.mysql.jdbc.Driver
   minPoolSize: 5
   maxPoolSize: 20
