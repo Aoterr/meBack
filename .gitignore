@@ -1,0 +1,13 @@
+.gitignore
+target/
+.idea/
+coreplus.iml
+src/main/resources.local/db.properties
+src/main/resources.local/datasource.properties
+*/**/.DS_Store
+.DS_Store
+catalina.base_IS_UNDEFINED
+src/main/resources.local
+out/
+src/main/webapp/dist.dev
+minierp.iml
