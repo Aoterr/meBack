@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.gd.minierp.product.repository.productMapper" >
-  <resultMap id="BaseResultMap" type="com.gd.minierp.product.bean.product" >
+<mapper namespace="com.gd.minierp.product.repository.IProductMapper" >
+  <resultMap id="BaseResultMap" type="com.gd.minierp.product.bean.Product" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="sale_price" property="salePrice" jdbcType="DECIMAL" />
     <result column="home_img" property="homeImg" jdbcType="VARCHAR" />
     <result column="imgs" property="imgs" jdbcType="VARCHAR" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.gd.minierp.product.bean.product" extends="BaseResultMap" >
-    <result column="desc" property="desc" jdbcType="LONGVARCHAR" />
+  <resultMap id="ResultMapWithBLOBs" type="com.gd.minierp.product.bean.Product" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, sale_price, home_img, imgs
   </sql>
   <sql id="Blob_Column_List" >
-    desc
+    content
   </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="queryById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     ,
@@ -29,15 +29,15 @@
     delete from product
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.gd.minierp.product.bean.product" >
+  <insert id="insert" parameterType="com.gd.minierp.product.bean.Product" >
     insert into product (id, name, sale_price, 
-      home_img, imgs, desc
+      home_img, imgs, content
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{salePrice,jdbcType=DECIMAL}, 
-      #{homeImg,jdbcType=VARCHAR}, #{imgs,jdbcType=VARCHAR}, #{desc,jdbcType=LONGVARCHAR}
+      #{homeImg,jdbcType=VARCHAR}, #{imgs,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.gd.minierp.product.bean.product" >
+  <insert id="insertSelective" parameterType="com.gd.minierp.product.bean.Product" >
     insert into product
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -55,8 +55,8 @@
       <if test="imgs != null" >
         imgs,
       </if>
-      <if test="desc != null" >
-        desc,
+      <if test="content != null" >
+        content,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -75,12 +75,12 @@
       <if test="imgs != null" >
         #{imgs,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        #{desc,jdbcType=LONGVARCHAR},
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.gd.minierp.product.bean.product" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.gd.minierp.product.bean.Product" >
     update product
     <set >
       <if test="name != null" >
@@ -95,22 +95,22 @@
       <if test="imgs != null" >
         imgs = #{imgs,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        desc = #{desc,jdbcType=LONGVARCHAR},
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gd.minierp.product.bean.product" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.gd.minierp.product.bean.Product" >
     update product
     set name = #{name,jdbcType=VARCHAR},
       sale_price = #{salePrice,jdbcType=DECIMAL},
       home_img = #{homeImg,jdbcType=VARCHAR},
       imgs = #{imgs,jdbcType=VARCHAR},
-      desc = #{desc,jdbcType=LONGVARCHAR}
+      content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.gd.minierp.product.bean.product" >
+  <update id="updateByPrimaryKey" parameterType="com.gd.minierp.product.bean.Product" >
     update product
     set name = #{name,jdbcType=VARCHAR},
       sale_price = #{salePrice,jdbcType=DECIMAL},
@@ -118,4 +118,11 @@
       imgs = #{imgs,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="queryAllProducts" resultMap="ResultMapWithBLOBs">
+    SELECT
+    <include refid="Base_Column_List"/>,
+    <include refid="Blob_Column_List"/>
+    FROM product
+  </select>
 </mapper>

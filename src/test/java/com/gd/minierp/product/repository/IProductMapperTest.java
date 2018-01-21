@@ -1,6 +1,6 @@
-package com.gd.minierp.user.repository;
+package com.gd.minierp.product.repository;
 
-import com.gd.minierp.user.bean.User;
+import com.gd.minierp.product.bean.Product;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,20 +9,20 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-/**
- * guoshuai 18-1-16
- **/
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserRespositoryTest {
+public class IProductMapperTest {
+
 
     @Autowired
-    IUserRepository userMapper;
+    IProductMapper IProductMapper;
 
     @Test
-    public void testInsertUser() {
-        List<User> users = userMapper.getUsers();
-        System.out.println(users);
+    public void getOne() {
+        IProductMapper.queryById(1);
+    }  
+    @Test
+    public void getAll() {
+        List<Product> product = IProductMapper.queryAllProducts();
     }
 }

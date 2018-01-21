@@ -2,7 +2,7 @@ package com.gd.minierp.product.bean;
 
 import java.io.Serializable;
 
-public class product implements Serializable {
+public class Product implements Serializable {
     private Integer id;
 
     private String name;
@@ -13,7 +13,7 @@ public class product implements Serializable {
 
     private String imgs;
 
-    private String desc;
+    private String content;
 
     private static final long serialVersionUID = 1L;
 
@@ -57,12 +57,12 @@ public class product implements Serializable {
         this.imgs = imgs == null ? null : imgs.trim();
     }
 
-    public String getDesc() {
-        return desc;
+    public String getContent() {
+        return content;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setContent(String content) {
+        this.content = content;
     }
 
     @Override
@@ -76,13 +76,13 @@ public class product implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        product other = (product) that;
+        Product other = (Product) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
             && (this.getSalePrice() == null ? other.getSalePrice() == null : this.getSalePrice().equals(other.getSalePrice()))
             && (this.getHomeImg() == null ? other.getHomeImg() == null : this.getHomeImg().equals(other.getHomeImg()))
             && (this.getImgs() == null ? other.getImgs() == null : this.getImgs().equals(other.getImgs()))
-            && (this.getDesc() == null ? other.getDesc() == null : this.getDesc().equals(other.getDesc()));
+            && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()));
     }
 
     @Override
@@ -94,7 +94,7 @@ public class product implements Serializable {
         result = prime * result + ((getSalePrice() == null) ? 0 : getSalePrice().hashCode());
         result = prime * result + ((getHomeImg() == null) ? 0 : getHomeImg().hashCode());
         result = prime * result + ((getImgs() == null) ? 0 : getImgs().hashCode());
-        result = prime * result + ((getDesc() == null) ? 0 : getDesc().hashCode());
+        result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
         return result;
     }
 
@@ -109,7 +109,7 @@ public class product implements Serializable {
         sb.append(", salePrice=").append(salePrice);
         sb.append(", homeImg=").append(homeImg);
         sb.append(", imgs=").append(imgs);
-        sb.append(", desc=").append(desc);
+        sb.append(", content=").append(content);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
