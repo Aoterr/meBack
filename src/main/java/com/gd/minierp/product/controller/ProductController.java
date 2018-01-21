@@ -1,6 +1,7 @@
 package com.gd.minierp.product.controller;
 
 
+import com.gd.minierp.common.bean.ResultBean;
 import com.gd.minierp.product.bean.Product;
 import com.gd.minierp.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,9 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("queryAll")
-    public List<Product> queryProductsPagination(){
-        return productService.queryProductPagination();
+    public ResultBean queryProductsPagination(){
+        List<Product> products = productService.queryProductPagination();
+        return ResultBean.buildRightResult(products);
     }
 
 }
